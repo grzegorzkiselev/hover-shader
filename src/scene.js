@@ -2,6 +2,10 @@ import * as THREE from 'three'
 import Figure from './Figure'
 
 const perspective = 800
+const sizes = {
+    width: window.innerWidth,
+    height: window.innerHeight
+}
 
 export default class Scene {
     constructor() {
@@ -13,8 +17,8 @@ export default class Scene {
             alpha: true
         })
 
-        this.renderer.setSize(window.innerWidth, window.innerHeight)
-        this.renderer.setPixelRatio(window.devicePixelRatio)
+        this.renderer.setSize(sizes.width, sizes.height)
+        this.renderer.setPixelRatio(window.devicePixelRatio, 2)
 
         this.initLights()
         this.initCamera()
@@ -24,7 +28,6 @@ export default class Scene {
         })
     }
 
-    
     initLights() {
         const ambientlight = new THREE.AmbientLight(0xffffff, 2)
         this.scene.add(ambientlight)
@@ -43,6 +46,7 @@ export default class Scene {
         )
         this.camera.position.set(0, 0, perspective)
     }
+
 
     update() {
         if (this.renderer === undefined) return

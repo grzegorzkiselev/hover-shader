@@ -89,3 +89,4 @@ export default class Figure {
         this.uniforms.u_time.value += 0.01
     }
 }
+
